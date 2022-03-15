@@ -1,0 +1,15 @@
+version: "3"
+services:
+  mars-ui:
+    container_name: mars-ui
+    build: .
+    restart: always
+    external_links:
+      - apisix
+    ports:
+      - "80:80"
+    networks:
+      - mars
+networks:
+  mars:
+    driver: bridge
