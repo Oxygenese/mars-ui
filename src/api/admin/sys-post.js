@@ -1,12 +1,9 @@
 import request from '@/utils/request'
+import { sender } from '@/api/api'
 
 // 查询岗位列表
 export function listPost(query) {
-  return request({
-    url: '/sys/post/page',
-    method: 'get',
-    params: query
-  })
+  return sender('sys', 'querySysPostPage', query)
 }
 
 // 查询岗位详细

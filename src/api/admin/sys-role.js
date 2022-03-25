@@ -1,12 +1,9 @@
 import request from '@/utils/request'
+import { sender } from '@/api/api'
 
 // 查询角色列表
 export function listRole(query) {
-  return request({
-    url: '/sys/role/page',
-    method: 'get',
-    params: query
-  })
+  return sender('sys', 'querySysRolePage', query)
 }
 
 // 查询角色详细
@@ -74,10 +71,7 @@ export function getListrole(id) {
 }
 
 export function getRoutes() {
-  return request({
-    url: '/sys/menu/menurole',
-    method: 'get'
-  })
+  return sender('sys', 'querySysMenuRole', {})
 }
 
 // export function getMenuNames() {

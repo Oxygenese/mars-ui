@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import { sender } from '@/api/api'
 
 export function getDeptList(query) {
   return request({
@@ -18,10 +19,7 @@ export function getDept(deptId) {
 
 // 查询部门下拉树结构
 export function treeselect() {
-  return request({
-    url: '/sys/dept/tree',
-    method: 'get'
-  })
+  return sender('sys', 'querySysDeptTree', {})
 }
 
 // 根据角色ID查询部门树结构

@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import { sender } from '@/api/api'
 
 // login 登陆
 export function login(data) {
@@ -28,9 +29,6 @@ export function refreshtoken(data) {
 
 // getInfo 获取用户基本信息
 export function getInfo() {
-  return request({
-    url: '/sys/user/info',
-    method: 'get'
-  })
+  return sender('sys', 'querySysUserInfo', {})
 }
 

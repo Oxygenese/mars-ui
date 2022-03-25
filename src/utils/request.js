@@ -44,6 +44,9 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   response => {
+    if (response.data.data !== '') {
+      response.data.data = JSON.parse(response.data.data)
+    }
     const code = response.data.code
     if (code === 401) {
       store.dispatch('user/resetToken')

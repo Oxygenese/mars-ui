@@ -177,12 +177,12 @@ $ go-admin.exe server -c config/settings.yml
 
 ```shell
 # Compile the image
-docker build -t go-admin .
+mars build -t go-admin .
 
 
 # Start the container, the first go-admin is the container name, and the second go-admin is the image name
 # -v Mapping configuration file Local path: container path
-docker run --name go-admin -p 8000:8000 -v /config/settings.yml:/config/settings.yml -d go-admin-server
+mars run --name go-admin -p 8000:8000 -v /config/settings.yml:/config/settings.yml -d go-admin-server
 ```
 
 

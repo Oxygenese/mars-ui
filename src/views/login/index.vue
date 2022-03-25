@@ -154,7 +154,6 @@
 import { getCodeImg } from '@/api/login'
 import moment from 'moment'
 import SocialSign from './components/SocialSignin'
-
 export default {
   name: 'Login',
   components: { SocialSign },
@@ -243,8 +242,8 @@ export default {
     getCode() {
       getCodeImg().then((res) => {
         if (res !== undefined) {
-          this.codeUrl = res.data
-          this.loginForm.uuid = res.id
+          this.codeUrl = res.data.image
+          this.loginForm.uuid = res.data.id
         }
       })
     },

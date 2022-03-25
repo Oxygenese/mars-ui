@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import { sender } from '@/api/api'
 
 // 查询字典数据列表
 export function listData(query) {
@@ -19,10 +20,7 @@ export function getData(dictCode) {
 
 // 根据字典类型查询字典数据信息
 export function getDicts(dictType) {
-  return request({
-    url: '/sys/dict/data/option-select?dictType=' + dictType,
-    method: 'get'
-  })
+  return sender('sys', 'queryDictDataSelect', { dictType: dictType })
 }
 
 // 新增字典数据

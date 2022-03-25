@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import { sender } from '@/api/api'
 
 // 获取验证码
 export function getCodeImg() {
@@ -10,8 +11,5 @@ export function getCodeImg() {
 
 // 查询 此接口不在验证数据权限
 export function getSetting() {
-  return request({
-    url: '/sys/app-config',
-    method: 'get'
-  })
+  return sender('sys', 'queryAppConfig', {})
 }
