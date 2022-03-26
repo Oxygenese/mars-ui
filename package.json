@@ -13,7 +13,8 @@
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
     "test:ci": "npm run lint && npm run test:unit",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
-    "new": "plop"
+    "new": "plop",
+    "proto": "pbjs -t json-module -w commonjs -o src/proto/*.js  src/proto/*.proto"
   },
   "husky": {
     "hooks": {
@@ -58,6 +59,8 @@
     "element-ui": "2.13.2",
     "file-saver": "2.0.2",
     "fuse.js": "6.4.1",
+    "google-protobuf": "^3.20.0-rc.2",
+    "js-base64": "^3.7.2",
     "js-cookie": "2.2.1",
     "jsonlint": "1.6.3",
     "jszip": "3.5.0",
@@ -66,6 +69,7 @@
     "normalize.css": "8.0.1",
     "nprogress": "0.2.0",
     "path-to-regexp": "6.1.0",
+    "protobufjs": "^6.11.2",
     "remixicon": "^2.5.0",
     "sass-resources-loader": "^2.0.3",
     "screenfull": "5.0.2",

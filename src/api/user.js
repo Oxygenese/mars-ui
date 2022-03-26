@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 import { sender } from '@/api/api'
+import protoRoot from '@/proto/api_pb'
 
 // login 登陆
 export function login(data) {
@@ -29,6 +30,6 @@ export function refreshtoken(data) {
 
 // getInfo 获取用户基本信息
 export function getInfo() {
-  return sender('sys', 'querySysUserInfo', {})
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysUserInfo'], {})
 }
 

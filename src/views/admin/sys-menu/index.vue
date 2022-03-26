@@ -48,52 +48,6 @@
             </template>
           </el-table-column>
           <el-table-column prop="sort" label="排序" width="60px" />
-<!--          <el-table-column prop="permission" label="权限标识" :show-overflow-tooltip="true">-->
-<!--            <template slot-scope="scope">-->
-<!--              <el-popover v-if="scope.row.sysApi.length>0" trigger="hover" placement="top">-->
-<!--                <el-table-->
-<!--                  :data="scope.row.sysApi"-->
-<!--                  border-->
-<!--                  style="width: 100%"-->
-<!--                >-->
-<!--                  <el-table-column-->
-<!--                    prop="title"-->
-<!--                    label="title"-->
-<!--                    width="260px"-->
-<!--                  >-->
-<!--                    <template>-->
-<!--                      <span v-if="scope.row.type=='SYS' && scope.row.title!=''"><el-tag type="success">{{ '['+scope.row.type +'] '+ scope.row.title }}</el-tag></span>-->
-<!--                      <span v-if="scope.row.type!='SYS' && scope.row.title!=''"><el-tag type="">{{ '['+scope.row.type +'] '+scope.row.title }}</el-tag></span>-->
-<!--                      <span v-if="scope.row.title==''"><el-tag type="danger">暂无</el-tag></span>-->
-
-<!--                    </template>-->
-<!--                  </el-table-column>-->
-<!--                  <el-table-column-->
-<!--                    prop="path"-->
-<!--                    label="path"-->
-<!--                    width="270px"-->
-<!--                  >-->
-<!--                    <template>-->
-<!--                      <el-tag v-if="scope.row.action=='GET'">{{ scope.row.action }}</el-tag>-->
-<!--                      <el-tag v-if="scope.row.action=='POST'" type="success">{{ scope.row.action }}</el-tag>-->
-<!--                      <el-tag v-if="scope.row.action=='PUT'" type="warning">{{ scope.row.action }}</el-tag>-->
-<!--                      <el-tag v-if="scope.row.action=='DELETE'" type="danger">{{ scope.row.action }}</el-tag>-->
-<!--                      {{ scope.row.path }}-->
-<!--                    </template>-->
-<!--                  </el-table-column>-->
-
-<!--                </el-table>-->
-<!--                <div slot="reference" class="name-wrapper">-->
-<!--                  <span v-if="scope.row.permission==''">-</span>-->
-<!--                  <span v-else>{{ scope.row.permission }}</span>-->
-<!--                </div>-->
-<!--              </el-popover>-->
-<!--              <span v-else>-->
-<!--                <span v-if="scope.row.permission==''">-</span>-->
-<!--                <span v-else>{{ scope.row.permission }}</span>-->
-<!--              </span>-->
-<!--            </template>-->
-<!--          </el-table-column>-->
           <el-table-column prop="path" label="组件路径" :show-overflow-tooltip="true">
             <template slot-scope="scope">
               <span v-if="scope.row.menuType=='A'">{{ scope.row.path }}</span>

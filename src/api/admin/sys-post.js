@@ -1,9 +1,10 @@
 import request from '@/utils/request'
 import { sender } from '@/api/api'
+import protoRoot from '@/proto/api_pb'
 
 // 查询岗位列表
 export function listPost(query) {
-  return sender('sys', 'querySysPostPage', query)
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysPostPage'], query)
 }
 
 // 查询岗位详细

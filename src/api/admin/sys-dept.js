@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 import { sender } from '@/api/api'
+import protoRoot from '@/proto/api_pb'
 
 export function getDeptList(query) {
   return request({
@@ -19,15 +20,12 @@ export function getDept(deptId) {
 
 // 查询部门下拉树结构
 export function treeselect() {
-  return sender('sys', 'querySysDeptTree', {})
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysDeptTree'], {})
 }
 
 // 根据角色ID查询部门树结构
 export function roleDeptTreeselect(roleId) {
-  return request({
-    url: '/sys/dept/tree/select/' + roleId,
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysDeptTreeRoleSelect'], { roleId: roleId })
 }
 
 // 新增部门

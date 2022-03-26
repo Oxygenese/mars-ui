@@ -1,7 +1,8 @@
 import request from '@/utils/request'
 import { sender } from '@/api/api'
-
+import protoRoot from '@/proto/api_pb'
 // 查询字典数据列表
+
 export function listData(query) {
   return request({
     url: '/sys/dict/data/page',
@@ -20,7 +21,7 @@ export function getData(dictCode) {
 
 // 根据字典类型查询字典数据信息
 export function getDicts(dictType) {
-  return sender('sys', 'queryDictDataSelect', { dictType: dictType })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QueryDictDataSelect'], { dictType: dictType })
 }
 
 // 新增字典数据

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
-
-export function sender(path, operation, data) {
+import { Base64 } from 'js-base64'
+export function sender(path, operate, data) {
   if (data === undefined) {
     data = {}
   }
@@ -8,8 +8,8 @@ export function sender(path, operation, data) {
     url: path,
     method: 'post',
     data: {
-      operation: operation,
-      data: JSON.stringify(data)
+      operate: operate,
+      data: Base64.encode(JSON.stringify(data))
     }
   })
 }

@@ -1,24 +1,25 @@
 import request from '@/utils/request'
 import { sender } from '@/api/api'
+import protoRoot from '@/proto/api_pb'
 
 // 查询用户详细
 export function getUser(userId) {
-  return sender('sys', 'querySysUserById', { id: userId })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysUserById'], { id: userId })
 }
 
 // 新增用户
 export function addUser(data) {
-  return sender('sys', 'createSysUser', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['CreateSysUser'], data)
 }
 
 // 修改用户
 export function updateUser(data) {
-  return sender('sys', 'updateSysUser', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysUser'], data)
 }
 
 // 删除用户
 export function delUser(data) {
-  return sender('sys', 'updateSysUser', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['DeleteSysUser'], data)
 }
 
 // 导出用户
@@ -36,7 +37,7 @@ export function resetUserPwd(userId, password) {
     userId,
     password
   }
-  return sender('sys', 'resetSysUserPwd', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['ResetSysUserPwd'], data)
 }
 
 // 用户状态修改
@@ -45,12 +46,12 @@ export function changeUserStatus(e) {
     userId: e.userId,
     status: e.status
   }
-  return sender('sys', 'changeSysUserStatus', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['ChangeSysUserStatus'], data)
 }
 
 // 修改用户个人信息
 export function updateUserProfile(data) {
-  return sender('sys', 'updateSysUserProfile', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysUserProfile'], data)
 }
 
 // 下载用户导入模板
@@ -64,20 +65,20 @@ export function updateUserPwd(oldPassword, newPassword) {
     oldPassword,
     newPassword
   }
-  return sender('sys', 'updateSysUserPwd', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysUserPwd'], data)
 }
 
 // 用户头像上传
 export function uploadAvatar(data) {
-  return sender('sys', 'uploadAvatar', data)
+  return sender('sys', protoRoot.lookup('api.Operate').values['UploadAvatar'], data)
 }
 
 // 查询用户个人信息
 export function getUserProfile() {
-  return sender('sys', 'querySysUserProfile', {})
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysUserProfile'], {})
 }
 
 export function listUser(query) {
-  return sender('sys', 'querySysUserPage', query)
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysUserPage'], query)
 }
 

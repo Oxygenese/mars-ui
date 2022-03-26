@@ -1,20 +1,14 @@
-import request from '@/utils/request'
+import { sender } from '@/api/api'
+import protoRoot from '@/proto/api_pb'
 
 // 查询菜单列表
 export function listMenu(query) {
-  return request({
-    url: '/sys/menu/page',
-    method: 'get',
-    params: query
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysMenuPage'], query)
 }
 
 // 查询菜单详细
 export function getMenu(menuId) {
-  return request({
-    url: '/sys/menu/' + menuId,
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysMenuById'], { id: menuId })
 }
 
 // 查询菜单下拉树结构
@@ -27,35 +21,20 @@ export function getMenu(menuId) {
 
 // 根据角色ID查询菜单下拉树结构
 export function roleMenuTreeselect(roleId) {
-  return request({
-    url: '/sys/menu/tree/select/' + roleId,
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysMenuTreeSelect'], { roleId: roleId })
 }
 
 // 新增菜单
 export function addMenu(data) {
-  return request({
-    url: '/sys/menu',
-    method: 'post',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['CreateSysMenu'], data)
 }
 
 // 修改菜单
 export function updateMenu(data, id) {
-  return request({
-    url: '/sys/menu/' + id,
-    method: 'put',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysMenu'], data)
 }
 
 // 删除菜单
 export function delMenu(data) {
-  return request({
-    url: '/sys/menu',
-    method: 'delete',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['DeleteSysMenu'], data)
 }

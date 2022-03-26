@@ -1,44 +1,30 @@
 import request from '@/utils/request'
 import { sender } from '@/api/api'
+import protoRoot from '@/proto/api_pb'
 
 // 查询角色列表
 export function listRole(query) {
-  return sender('sys', 'querySysRolePage', query)
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysRolePage'], query)
 }
 
 // 查询角色详细
 export function getRole(roleId) {
-  return request({
-    url: '/sys/role/' + roleId,
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysRoleById'], { id: roleId })
 }
 
 // 新增角色
 export function addRole(data) {
-  return request({
-    url: '/sys/role',
-    method: 'post',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['CreateSysRole'], data)
 }
 
 // 修改角色
 export function updateRole(data, roleId) {
-  return request({
-    url: '/sys/role/' + roleId,
-    method: 'put',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysRole'], data)
 }
 
 // 角色数据权限
 export function dataScope(data) {
-  return request({
-    url: '/sys/role/data/scope',
-    method: 'put',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysRoleDataScope'], data)
 }
 
 // 角色状态修改
@@ -47,20 +33,12 @@ export function changeRoleStatus(roleId, status) {
     roleId,
     status
   }
-  return request({
-    url: '/sys/role/status',
-    method: 'put',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['ChangeSysRoleStatus'], data)
 }
 
 // 删除角色
-export function delRole(roleId) {
-  return request({
-    url: '/sys/role',
-    method: 'delete',
-    data: roleId
-  })
+export function delRole(data) {
+  return sender('sys', protoRoot.lookup('api.Operate').values['DeleteSysRole'], data)
 }
 
 export function getListrole(id) {
@@ -71,7 +49,7 @@ export function getListrole(id) {
 }
 
 export function getRoutes() {
-  return sender('sys', 'querySysMenuRole', {})
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysMenuRole'], {})
 }
 
 // export function getMenuNames() {
