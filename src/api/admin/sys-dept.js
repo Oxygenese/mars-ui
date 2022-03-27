@@ -1,21 +1,13 @@
-import request from '@/utils/request'
 import { sender } from '@/api/api'
 import protoRoot from '@/proto/api_pb'
 
 export function getDeptList(query) {
-  return request({
-    url: '/sys/dept/page',
-    method: 'get',
-    params: query
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysDeptPage'], query)
 }
 
 // 查询部门详细
 export function getDept(deptId) {
-  return request({
-    url: '/sys/dept/' + deptId,
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysDeptById'], { id: deptId })
 }
 
 // 查询部门下拉树结构
@@ -30,27 +22,15 @@ export function roleDeptTreeselect(roleId) {
 
 // 新增部门
 export function addDept(data) {
-  return request({
-    url: '/sys/dept',
-    method: 'post',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['CreateSysDeptById'], data)
 }
 
 // 修改部门
 export function updateDept(data, id) {
-  return request({
-    url: '/sys/dept/' + id,
-    method: 'put',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysDept'], data)
 }
 
 // 删除部门
 export function delDept(data) {
-  return request({
-    url: '/sys/dept',
-    method: 'delete',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['DeleteSysDept'], data)
 }

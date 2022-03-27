@@ -65,6 +65,7 @@ var $root = ($protobuf.roots['default'] || ($protobuf.roots['default'] = new $pr
             UpdateSysUserPwd: 18,
             ResetSysUserPwd: 19,
             DeleteSysUser: 20,
+            ExportSysUser: 31,
             QuerySysMenuRole: 21,
             QuerySysRolePage: 22,
             QuerySysRoleById: 23,
@@ -80,9 +81,29 @@ var $root = ($protobuf.roots['default'] || ($protobuf.roots['default'] = new $pr
             UpdateSysMenu: 45,
             DeleteSysMenu: 46,
             QueryDictDataSelect: 61,
+            QueryDictDataByCode: 62,
+            QueryDictDataPage: 63,
+            CreateDictData: 64,
+            UpdateDictData: 65,
+            DeleteDictData: 66,
+            QueryDictTypePage: 71,
+            QueryDictTypeById: 72,
+            CreateDictType: 73,
+            UpdateDictType: 74,
+            DeleteDictType: 75,
+            ExportDictType: 76,
+            QueryDictTypeOptionSelect: 77,
             QuerySysDeptTree: 81,
             QuerySysDeptTreeRoleSelect: 82,
-            QuerySysPostPage: 101
+            QuerySysDeptById: 83,
+            QuerySysDeptPage: 84,
+            UpdateSysDept: 85,
+            DeleteSysDept: 86,
+            QuerySysPostPage: 101,
+            QuerySysPostById: 102,
+            CreateSysPost: 103,
+            UpdateSysPost: 104,
+            DeleteSysPost: 105
           }
         }
       }

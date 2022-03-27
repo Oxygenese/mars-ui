@@ -1,4 +1,3 @@
-import request from '@/utils/request'
 import { sender } from '@/api/api'
 import protoRoot from '@/proto/api_pb'
 
@@ -41,20 +40,7 @@ export function delRole(data) {
   return sender('sys', protoRoot.lookup('api.Operate').values['DeleteSysRole'], data)
 }
 
-export function getListrole(id) {
-  return request({
-    url: '/sys/menu/role/' + id,
-    method: 'get'
-  })
-}
-
 export function getRoutes() {
   return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysMenuRole'], {})
 }
 
-// export function getMenuNames() {
-//   return request({
-//     url: '/api/v1/menuids',
-//     method: 'get'
-//   })
-// }

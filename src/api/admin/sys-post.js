@@ -1,4 +1,3 @@
-import request from '@/utils/request'
 import { sender } from '@/api/api'
 import protoRoot from '@/proto/api_pb'
 
@@ -9,36 +8,21 @@ export function listPost(query) {
 
 // 查询岗位详细
 export function getPost(postId) {
-  return request({
-    url: '/sys/post/' + postId,
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QuerySysPostById'], { id: postId })
 }
 
 // 新增岗位
 export function addPost(data) {
-  return request({
-    url: '/sys/post',
-    method: 'post',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['CreateSysPost'], data)
 }
 
 // 修改岗位
 export function updatePost(data, id) {
-  return request({
-    url: '/sys/post/' + id,
-    method: 'put',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateSysPost'], data)
 }
 
 // 删除岗位
 export function delPost(postId) {
-  return request({
-    url: '/sys/post',
-    method: 'delete',
-    data: postId
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['DeleteSysPost'], postId)
 }
 

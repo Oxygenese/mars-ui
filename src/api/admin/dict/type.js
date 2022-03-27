@@ -1,62 +1,37 @@
-import request from '@/utils/request'
+import { sender } from '@/api/api'
+import protoRoot from '@/proto/api_pb'
 
 // 查询字典类型列表
 export function listType(query) {
-  return request({
-    url: '/sys/dict/type/page',
-    method: 'get',
-    params: query
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QueryDictTypePage'], query)
 }
 
 // 查询字典类型详细
 export function getType(dictId) {
-  return request({
-    url: '/sys/dict/type/' + dictId,
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QueryDictTypeById'], { id: dictId })
 }
 
 // 新增字典类型
 export function addType(data) {
-  return request({
-    url: '/sys/dict/type',
-    method: 'post',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['CreateDictType'], data)
 }
 
 // 修改字典类型
 export function updateType(data) {
-  return request({
-    url: '/sys/dict/type/' + data.id,
-    method: 'put',
-    data: data
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['UpdateDictType'], data)
 }
 
 // 删除字典类型
 export function delType(dictId) {
-  return request({
-    url: '/sys/dict/type',
-    method: 'delete',
-    data: dictId
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['DeleteDictType'], dictId)
 }
 
 // 导出字典类型
 export function exportType(query) {
-  return request({
-    url: '/sys/dict/type/export',
-    method: 'get',
-    params: query
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['ExportDictType'], query)
 }
 
 // 获取字典选择框列表
 export function optionselect() {
-  return request({
-    url: '/sys/dict/type/option-select',
-    method: 'get'
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['QueryDictTypeOptionSelect'], {})
 }

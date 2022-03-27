@@ -1,4 +1,3 @@
-import request from '@/utils/request'
 import { sender } from '@/api/api'
 import protoRoot from '@/proto/api_pb'
 
@@ -24,11 +23,7 @@ export function delUser(data) {
 
 // 导出用户
 export function exportUser(query) {
-  return request({
-    url: '/sys/user/export',
-    method: 'get',
-    params: query
-  })
+  return sender('sys', protoRoot.lookup('api.Operate').values['ExportSysUser'], query)
 }
 
 // 用户密码重置
